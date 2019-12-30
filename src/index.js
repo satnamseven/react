@@ -1,15 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React,{Component} from 'react';
+import {render} from 'react-dom';
 
-class Message extends React.Component{
+let nameData = {
+    name: "satnam ",
+    age : 23,
+    work : "ss"
+}
+
+class Message extends Component{
     render(){
+        const {name, age, work}=this.props;
         return(
         <div>
-        <h1 style={{color:this.props.color}}>{this.props.msg}</h1>
-        <h2>i wil be back in {this.props.mins} minutes </h2>
+        <ul>
+        <li>{name}</li>
+        <li>{age}</li>
+        <li>{work}</li>
+        </ul>
         </div>
         )
     }
 }
 var root=document.getElementById('root');
-ReactDOM.render(<Message color="red" msg="hello this is react" mins={5} />, root)
+render(<Message
+name={nameData.name} age={nameData.age} work={nameData.work}
+/>, root)
