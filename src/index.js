@@ -1,27 +1,40 @@
+import 'bootstrap/dist/css/bootstrap.min.css'
 import React,{Component} from 'react';
 import {render} from 'react-dom';
 
-let nameData = {
-    name: "satnam ",
-    age : 23,
-    work : "ss"
+let menu_items = [
+    {"menu" : "Home", "link" : "/home/", "target" : "_blank" },
+    {"menu" : "About", "link" : "/about/", "target" : "_blank" }
+]
+ 
+const NavigationBar =({menus}) => {
+    return(
+        <div className="main-nav">
+            <ul>
+                {menus.map(
+                    (menu,i)=>
+                <li key={i}><a  href={menu.link} target={menu.target}>{menu.menu}</a></li>
+                )}
+            </ul>
+
+        </div>
+    )
+}
+const Header = () => {
+    return (
+    <h4>Page : </h4>
+    )
 }
 
-class Message extends Component{
+class Tag extends Component{
     render(){
-        const {name, age, work}=this.props;
         return(
-        <div>
-        <ul>
-        <li>{name}</li>
-        <li>{age}</li>
-        <li>{work}</li>
-        </ul>
-        </div>
+            <div>
+                <NavigationBar menus={menu_items} / >
+                    <Header/>
+            </div>
         )
     }
 }
 var root=document.getElementById('root');
-render(<Message
-name={nameData.name} age={nameData.age} work={nameData.work}
-/>, root)
+render(<Tag/>, root)
